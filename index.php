@@ -10,7 +10,7 @@ $dotenv->load();
   <title>My Payment Form</title>
   <!-- link to the SqPaymentForm library -->
 
-  <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+  <!-- <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script> -->
   <script type="text/javascript">
     window.applicationId =
       <?php

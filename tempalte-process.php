@@ -20,10 +20,12 @@ $dotenv->load();
 
 # The access token to use in all Connect API requests. Use your *sandbox* access
 # token if you're just testing things out.
-$access_token = ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_ACCESS_TOKEN"]
-                                               :  $_ENV["SANDBOX_ACCESS_TOKEN"];
-$location_id =  ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_LOCATION_ID"]
-                                               :  $_ENV["SANDBOX_LOCATION_ID"];
+
+
+$access_token = ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["sq0idp-n4mjcCOkFCC_WBcoVv4zGg"]
+                                               :  $_ENV["sandbox-sq0idp-n4mjcCOkFCC_WBcoVv4zGg"];
+$location_id =  ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["QWEAKQ5J43SQN"]
+                                               :  $_ENV["CBASEEJ9cnh4RGSQmAXXeS3uDycgAQ"];
 
 // Initialize the authorization for Square
 \SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
@@ -79,6 +81,6 @@ try {
   echo "<pre>"; var_dump($e->getResponseHeaders()); echo "</pre>";
 }
 
-
+?>
 
 <?php get_footer(); ?>
