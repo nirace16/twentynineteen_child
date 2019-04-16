@@ -3,13 +3,12 @@
 Template Name: Process
 */
 ?>
-<?php get_header(); ?>
 
 <?php
 
 // Note this line needs to change if you don't use Composer:
 // require('connect-php-sdk/autoload.php');
-require 'vendor/autoload.php';
+require 'php_payment/vendor/autoload.php';
 
 // dotenv is used to read from the '.env' file created for credentials
 $dotenv = Dotenv\Dotenv::create(__DIR__);
@@ -22,10 +21,12 @@ $dotenv->load();
 # token if you're just testing things out.
 
 
-$access_token = ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["sq0idp-n4mjcCOkFCC_WBcoVv4zGg"]
-                                               :  $_ENV["sandbox-sq0idp-n4mjcCOkFCC_WBcoVv4zGg"];
-$location_id =  ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["QWEAKQ5J43SQN"]
-                                               :  $_ENV["CBASEEJ9cnh4RGSQmAXXeS3uDycgAQ"];
+$access_token = ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_ACCESS_TOKEN"]
+                                               :  $_ENV["SANDBOX_ACCESS_TOKEN"];
+$location_id =  ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_LOCATION_ID"]
+                                               :  $_ENV["SANDBOX_LOCATION_ID"];
+
+
 
 // Initialize the authorization for Square
 \SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
@@ -47,6 +48,8 @@ if (is_null($nonce)) {
 }
 
 $transactions_api = new \SquareConnect\Api\TransactionsApi();
+echo '<pre>';
+var_dump($transactions_api);
 
 # To learn more about splitting transactions with additional recipients,
 # see the Transactions API documentation on our [developer site]
@@ -66,6 +69,10 @@ $request_body = array (
   "idempotency_key" => uniqid()
 );
 
+var_dump($request_body);
+$result = $transactions_api->charge($location_id, $request_body);
+echo '<br>';
+var_dump($transactions_api->charge($location_id, $request_body));
 # The SDK throws an exception if a Connect endpoint responds with anything besides
 # a 200-level HTTP code. This block catches any exceptions that occur from the request.
 try {
@@ -82,5 +89,3 @@ try {
 }
 
 ?>
-
-<?php get_footer(); ?>

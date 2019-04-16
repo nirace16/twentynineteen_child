@@ -5,7 +5,6 @@ Template Name: Payment
 ?>
 <?php get_header(); ?>
 
-<?php //echo my_payment_form(); ?>
 <html>
 <head>
   <!-- link to the SqPaymentForm library -->
@@ -15,15 +14,15 @@ Template Name: Payment
     window.applicationId =
       <?php
         echo "\"";
-        echo ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["sq0idp-n4mjcCOkFCC_WBcoVv4zGg"]
-                                            :  $_ENV["sandbox-sq0idp-n4mjcCOkFCC_WBcoVv4zGg"];
+        echo ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_ACCESS_TOKEN"]
+                                            :  $_ENV["SANDBOX_ACCESS_TOKEN"];
         echo "\"";
       ?>;
     window.locationId =
     <?php
       echo "\"";
-      echo ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["QWEAKQ5J43SQN"]
-                                          :  $_ENV["CBASEEJ9cnh4RGSQmAXXeS3uDycgAQ"];
+      echo ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_LOCATION_ID"]
+                                          :  $_ENV["SANDBOX_LOCATION_ID"];
       echo "\"";
     ?>;
   /**
