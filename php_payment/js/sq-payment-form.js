@@ -4,13 +4,7 @@
  */
  jQuery(window).on("load",function(e){
 
-// jQuery('#sq-creditcard').on('click',function(e){
-//
-//   onGetCardNonce(event);
-// });
-
 function onGetCardNonce(event) {
-  alert('testes');
 
   // Don't submit the form until SqPaymentForm returns with a nonce
   event.preventDefault();
@@ -23,8 +17,8 @@ function onGetCardNonce(event) {
 // initializing various configuration fields and providing implementation for callback functions.
 var paymentForm = new SqPaymentForm({
   // Initialize the payment form elements
-  applicationId: 'sq0idp-n4mjcCOkFCC_WBcoVv4zGg',
-  locationId: 'QWEAKQ5J43SQN',
+  applicationId: "sandbox-sq0idp-quRBshKhsOpKb8AYv-a0ew",
+  locationId: "CBASEEJ9cnh4RGSQmAXXeS3uDycgAQ",
   inputClass: 'sq-input',
 
   // Customize the CSS for SqPaymentForm iframe elements
@@ -118,16 +112,16 @@ var paymentForm = new SqPaymentForm({
         requestShippingAddress: false,
         requestBillingInfo: true,
         shippingContact: {
-          familyName: "CUSTOMER LAST NAME",
-          givenName: "CUSTOMER FIRST NAME",
-          email: "mycustomer@example.com",
+          familyName: "Maharjan",
+          givenName: "Niresh",
+          email: "niresh@example.com",
           country: "USA",
           region: "CA",
           city: "San Francisco",
           addressLines: [
             "1455 Market St #600"
           ],
-          postalCode: "94103",
+          postalCode: "10310",
           phone:"14255551212"
         },
         currencyCode: "USD",

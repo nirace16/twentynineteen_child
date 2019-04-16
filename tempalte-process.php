@@ -28,8 +28,11 @@ $location_id =  ($_ENV["USE_PROD"] == 'true')  ?  $_ENV["PROD_LOCATION_ID"]
 
 
 
+
+
 // Initialize the authorization for Square
 \SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
+$locations_api = new \SquareConnect\Api\LocationsApi();
 
 # Helps ensure this code has been reached via form submission
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -49,7 +52,8 @@ if (is_null($nonce)) {
 
 $transactions_api = new \SquareConnect\Api\TransactionsApi();
 echo '<pre>';
-var_dump($transactions_api);
+// echo $locations_api->listLocations();
+// var_dump($transactions_api);
 
 # To learn more about splitting transactions with additional recipients,
 # see the Transactions API documentation on our [developer site]
@@ -69,23 +73,15 @@ $request_body = array (
   "idempotency_key" => uniqid()
 );
 
-var_dump($request_body);
-$result = $transactions_api->charge($location_id, $request_body);
-echo '<br>';
-var_dump($transactions_api->charge($location_id, $request_body));
+
 # The SDK throws an exception if a Connect endpoint responds with anything besides
 # a 200-level HTTP code. This block catches any exceptions that occur from the request.
 try {
-  $result = $transactions_api->charge($location_id, $request_body);
-  echo "<pre>";
-  print_r($result);
-  echo "</pre>";
-} catch (\SquareConnect\ApiException $e) {
-  echo "Caught exception!<br/>";
-  print_r("<strong>Response body:</strong><br/>");
-  echo "<pre>"; var_dump($e->getResponseBody()); echo "</pre>";
-  echo "<br/><strong>Response headers:</strong><br/>";
-  echo "<pre>"; var_dump($e->getResponseHeaders()); echo "</pre>";
+  print_r($transactions_api->charge($location_id, $request_body));
+} catch (Exception $e) {
+    echo "<pre>"; var_dump($e->getResponseBody()); echo "</pre>";
+      echo "<pre>"; var_dump($e->getResponseHeaders()); echo "</pre>";
+  echo "Caught exception " . $e->getMessage();
 }
 
 ?>

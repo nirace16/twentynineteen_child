@@ -11,6 +11,7 @@ Template Name: Payment
 
   <!-- <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script> -->
   <script type="text/javascript">
+
     window.applicationId =
       <?php
         echo "\"";
@@ -91,12 +92,6 @@ Template Name: Payment
          * Define callback function for "sq-button"
          * @param {*} event
          */
-
-        // jQuery('#sq-creditcard').on('click',function(e){
-        //
-        //   onGetCardNonce(event);
-        // });
-
         function onGetCardNonce(event) {
 
           // Don't submit the form until SqPaymentForm returns with a nonce
@@ -110,8 +105,8 @@ Template Name: Payment
         // initializing various configuration fields and providing implementation for callback functions.
         var paymentForm = new SqPaymentForm({
           // Initialize the payment form elements
-          applicationId: 'sq0idp-n4mjcCOkFCC_WBcoVv4zGg',
-          locationId: 'QWEAKQ5J43SQN',
+          applicationId: "sandbox-sq0idp-quRBshKhsOpKb8AYv-a0ew",
+          locationId: "CBASEEJ9cnh4RGSQmAXXeS3uDycgAQ",
           inputClass: 'sq-input',
 
           // Customize the CSS for SqPaymentForm iframe elements
@@ -214,7 +209,7 @@ Template Name: Payment
                   addressLines: [
                     "1455 Market St #600"
                   ],
-                  postalCode: "94103",
+                  postalCode: "10310",
                   phone:"14255551212"
                 },
                 currencyCode: "USD",
